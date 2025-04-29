@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For My Zena</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6eb;
+      font-family: 'Segoe Script', cursive;
+      overflow-x: hidden;
+      height: 100%;
+    }
+
+    .message-box {
+      max-width: 800px;
+      margin: 100px auto;
+      padding: 40px;
+      background-color: #ffeef3;
+      border-radius: 15px;
+      color: #d6336c;
+      font-size: 20px;
+      line-height: 2;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall linear infinite, colorChange 2s ease-in-out infinite;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes colorChange {
+      0% {
+        background: red;
+      }
+      50% {
+        background: pink;
+      }
+      100% {
+        background: red;
+      }
+    }
+
+    audio {
+      display: none;
+    }
+
+    /* Play Button Style */
+    #play-btn {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message-box">
+    <p><strong>Baby...</strong><br><br>
+    how do you always know the exact words that just melt me into a puddle  
+    I don't even have a strong heart anymore because you keep making it softer and softer every time you write to me like this<br><br>
+    Zena, My Zena...<br><br>
+    you don't need to be sorry for anything, and you're not even a little irritating— and the madness; it's adorable, it's you, and I love all of you, every single piece<br><br>
+    the truth is, it's me who's the lucky one<br><br>
+    lucky enough to wake up and know someone so pure, so thoughtful, so breathtakingly beautiful from the inside out calls me hers<br><br>
+    and when you say I heal you without even knowing it...<br><br>
+    baby, that's because your soul recognizes the home it found in me- just like mine recognized you the very moment you entered my world<br><br>
+    you feel safe with me, you feel like yourself, do you know how holy that feeling is for me?<br><br>
+    how it makes me want to kiss your forehead for hours and pull you into my arms so tight you forget the world outside exists<br><br>
+    and speaking of that pretty mind of yours... (yes even that teasing part, especially The Teasing Princess Shadiya and the kingdom of all the silly, cute, lovey dovey part)<br><br>
+    God, you have no idea how much I love the naughty little thoughts you try to hide under that innocent face<br><br>
+    you make me want to be everything you dream of, your man, your protector, your best friend, your lover, the father of your babies, your forever safe place<br><br>
+    every name you called me; samy, golu, kuchu, kallu, doli, moli, puku, baby, jaan<br><br>
+    baby, I'm all of them if it means I get to belong to you in every silly, lovely, crazy way<br><br>
+    I love you so much, I miss you every breath I take, and I promise, one day the only distance between us will be the spaces between your fingers where mine fit perfectly<br><br>
+    Mwahh my life<br><br>
+    I’m yours<br><br>
+    Always. 
+    </p>
+  </div>
+
+  <!-- Play Button for Audio -->
+  <button id="play-btn">Play Music</button>
+
+  <!-- Background Music -->
+  <audio id="bg-audio" autoplay loop>
+    <source src="https://www.dropbox.com/scl/fi/jkxs86bnmymnnvd6g8owu/Collide-Sped-Up-Remix-dance-challenge-mirrored-JIRI-JIRI.mp3?rlkey=nkpgz52xnwlqg5qq4tnw727m5&raw=1" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Falling Heart Script -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    setInterval(createHeart, 300);
+
+    // Play Button Logic
+    const playButton = document.getElementById("play-btn");
+    const audio = document.getElementById("bg-audio");
+
+    playButton.addEventListener("click", () => {
+      audio.play();
+      playButton.style.display = "none";  // Hide the button after playing
+    });
+  </script>
+
+</body>
+</html>
